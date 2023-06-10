@@ -46,6 +46,11 @@ class MyDatabase {
             const val DATABASE_NAME = "myDBfile.db"
         }
 
+        // 날짜 검색
+        // "select * from" + "MyDBContract.MyEntry.TABLE_NAME" + "where date = date(입력값)"
+        // 이름 검색
+        // "select * from" + "MyDBContract.MyEntry.TABLE_NAME" + "where name = name(입력값)"
+
         fun selectAll(): MutableList<MyElement> {
             val readList = mutableListOf<MyElement>()
             val db = readableDatabase

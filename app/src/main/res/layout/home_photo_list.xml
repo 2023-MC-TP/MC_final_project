@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- activity_main RecyclerView 부분에 들어갈 것
- 사진을 3개씩 보여줘야하는데 아직 어떻게 해야할지 못정해서 일단 이렇게만 적었어요-->
+ 사진을 한 줄에 3개씩 보여주기 위해 -->
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +8,21 @@
     android:columnCount="3">
 
     <ImageView
-        android:id="@+id/photo"
+        android:id="@+id/photo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_columnSpan="1"
+        android:layout_margin="10dp"/>
+    <ImageView
+        android:id="@+id/photo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="1"
+        android:layout_margin="10dp"/>
+    <ImageView
+        android:id="@+id/photo3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="1"
+        android:layout_margin="10dp"/>
 </GridLayout>

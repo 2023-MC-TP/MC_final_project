@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mc_finalproject.databinding.HomePhotoListBinding
 
@@ -33,9 +34,8 @@ class MyAdapter(private var dataset: MutableList<MyElement>): RecyclerView.Adapt
         Log.d("TAG", drawable.toString())
 
         // Drawable을 ImageView에 설정
-        binding.photo.setImageDrawable(drawable)
+        binding.photo1.setImageDrawable(drawable)
     }
-
 }
 private fun byteArrayToDrawable(context: Context, byteArray: ByteArray): Drawable? {
     val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)

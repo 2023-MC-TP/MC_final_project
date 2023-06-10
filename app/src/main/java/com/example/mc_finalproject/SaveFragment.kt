@@ -91,7 +91,7 @@ class SaveFragment: Fragment() {
             val myentry = MyDatabase.MyDBContract.MyEntry
             val values = ContentValues().apply {
                 put(myentry.image, drawableToByteArray(binding.insertPhoto.drawable))
-                // 이 날짜를 어떻게 넣어야할까요....
+                // 20xx/xx/xx teat 형식으로 저장
                 put(myentry.date, binding.viewDate.text.toString())
                 put(myentry.place, binding.place.text.toString())
                 put(myentry.name, binding.people.text.toString())
