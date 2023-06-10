@@ -62,7 +62,7 @@ class SaveFragment: Fragment() {
             }
         }
 
-        // 버튼 누르면 갤러리에서 선택한 사진 등록(일단 view에 보이게만 > 그냥 이미지 누르면으로 바꿀까요?
+        // 버튼 누르면 갤러리에서 선택한 사진 등록(일단 view에 보이게만 > 이미지 누르면으로 변경상태
         binding.insertPhoto.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
@@ -98,7 +98,7 @@ class SaveFragment: Fragment() {
                 put(myentry.comment, binding.memo.text.toString())
 
             }
-            // 로그는 잘 찍히는데 Toast메세지는 안뜨네요...
+            // 로그는 잘 찍히는데 노트북에 Toast메세지는 안뜨고 핸드폰에만 떠요
             Toast.makeText(requireContext(), "정상적으로 저장되었습니다 :)", Toast.LENGTH_SHORT).show()
             Log.d("TAG", "저장" + values.toString())
 

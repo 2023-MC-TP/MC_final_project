@@ -1,118 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="left|center"
-        android:text="추억 저장하기"
-        android:textSize="25dp" />
-
-    <!--버튼누르면 갤러리 이동하기위해 추가-->
-    <Button
-        android:id="@+id/galBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="사진 불러오기"/>
-
-    <!--기본 이미지 교체해야함-->
-    <ImageView
-        android:id="@+id/insertPhoto"
-        android:src="@drawable/ic_launcher_background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:gravity="left|center"
-            android:text="함께한 사람 : "
-            android:textSize="20dp" />
-        <EditText
-            android:id="@+id/people"
-            android:text=""
-            android:hint="--"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="left|center"
-            android:text="촬영한 장소 : "
-            android:textSize="20dp" />
-        <EditText
-            android:id="@+id/place"
-            android:text=""
-            android:hint="--"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
-    </LinearLayout>
+            android:text="추억 저장하기"
+            android:textSize="25dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:gravity="left|center"
-            android:text="촬영한 날짜 : "
-            android:textSize="20dp" />
-        <TextView
-            android:id="@+id/viewDate"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"/>
-
-        <!--이거 나중에 이미지로 바꾸면 나을거같아요-->
+        <!--버튼누르면 갤러리 이동하기위해 추가-->
         <Button
-            android:id="@+id/inputDate"
+            android:id="@+id/galBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="수정" />
+            android:text="사진 불러오기"/>
+
+        <!--기본 이미지 교체해야함-->
+        <ImageView
+            android:id="@+id/insertPhoto"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="left|center"
+                android:text="함께한 사람 : "
+                android:textSize="20dp" />
+            <EditText
+                android:id="@+id/people"
+                android:text=""
+                android:hint="--"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="left|center"
+                android:text="촬영한 장소 : "
+                android:textSize="20dp" />
+            <EditText
+                android:id="@+id/place"
+                android:text=""
+                android:hint="--"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="left|center"
+                android:text="촬영한 날짜 : "
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/viewDate"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"/>
+
+            <!--이거 나중에 이미지로 바꾸면 나을거같아요-->
+            <Button
+                android:id="@+id/inputDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수정" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="left|center"
+            android:text="추억 기록"
+            android:textSize="20dp" />
+
+        <!--의존성 문제가 있어서 android:textMultiLine을 android:inputType="textMultiLine"로 대치-->
+        <EditText
+            android:id="@+id/memo"
+            android:inputType="textMultiLine"
+            android:hint="--"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <!--저장 버튼 추가-->
+        <Button
+            android:id="@+id/insertBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장"/>
     </LinearLayout>
-
-
-    <!--    <DatePicker-->
-    <!--        android:id="@+id/date"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        android:calendarViewShown="false"-->
-    <!--        android:datePickerMode="spinner" />-->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="left|center"
-        android:text="추억 기록"
-        android:textSize="20dp" />
-    <!--의존성 문제가 있어서 android:textMultiLine을 android:inputType="textMultiLine"로 대치-->
-    <EditText
-        android:id="@+id/memo"
-        android:inputType="textMultiLine"
-        android:hint="--"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <!--저장 버튼 추가-->
-    <Button
-        android:id="@+id/insertBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="저장"/>
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

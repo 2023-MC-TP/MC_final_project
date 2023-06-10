@@ -56,6 +56,8 @@ class HomeFragment: Fragment() {
         val imageList = listOf(
             R.drawable.ic_launcher_background,
             R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
             R.drawable.ic_launcher_background
         )
 

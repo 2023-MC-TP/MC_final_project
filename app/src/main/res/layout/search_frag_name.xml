@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-
-    <EditText
-        android:id="@+id/searchName"
-        android:hint="이름으로 사진을 검색하세요."
-        android:text=""
+    android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="20dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
-    <!-- 검색 전엔 보이지 않게 + 검색한 사람 이름 띄워줘야함-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="left|center"
-        android:text="ㅇㅇㅇ님과 찍은 사진"
-        android:textSize="20dp" />
+        <EditText
+            android:id="@+id/searchName"
+            android:hint="이름으로 사진을 검색하세요."
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="20dp" />
 
-    <!-- 사진 불러와서 보여주는 용도 -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        <!-- 검색 전엔 보이지 않게 + 검색한 사람 이름 띄워줘야함-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="left|center"
+            android:text="ㅇㅇㅇ님과 찍은 사진"
+            android:textSize="20dp" />
 
-</LinearLayout>
+        <!-- 사진 불러와서 보여주는 용도 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
