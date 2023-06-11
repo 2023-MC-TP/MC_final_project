@@ -10,6 +10,7 @@ import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
@@ -57,12 +58,19 @@ class HomeFragment: Fragment() {
         val getList = dbHelper.selectAll()
 
         val adapter = MyAdapter(getList)
-        adapter.setItemClickListener(object: MyAdapter.OnItemClickListener {
-            override fun onClick(v: View, position: Int) {
+        adapter.setItemLongClickListener(object: MyAdapter.OnItemLongClickListener {
+            override fun onLongClick(v: View, position: Int) {
                 val db = dbHelper.writableDatabase
                 val itemId = adapter.getElement(position).image_id
                 db?.delete(MyDatabase.MyDBContract.MyEntry.TABLE_NAME, "${MyDatabase.MyDBContract.MyEntry.image_id}=?", arrayOf(itemId.toString()))
                 loadAndUpdateUI(view)
+                Toast.makeText(requireContext(), "사진이 삭제되었습니다", Toast.LENGTH_SHORT).show()
+            }
+        })
+        adapter.setItemClickListener(object: MyAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                val itemId = adapter.getElement(position).image_id
+
             }
         })
 

@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -27,12 +28,19 @@ class MyAdapter(private var dataset: MutableList<MyElement>): RecyclerView.Adapt
         return dataset[pos]
     }
 
+    private lateinit var itemLongClickListener: OnItemLongClickListener
     private lateinit var itemClickListener: OnItemClickListener
 
+    interface OnItemLongClickListener {
+        fun onLongClick(v: View, position: Int)
+    }
     interface OnItemClickListener {
-        fun onClick(v: View, position: Int)
+        fun  onClick(v: View, position: Int)
     }
 
+    fun setItemLongClickListener(onItemLongClickListener: OnItemLongClickListener){
+        this.itemLongClickListener = onItemLongClickListener
+    }
     fun setItemClickListener(onItemClickListener: OnItemClickListener){
         this.itemClickListener = onItemClickListener
     }
@@ -48,8 +56,11 @@ class MyAdapter(private var dataset: MutableList<MyElement>): RecyclerView.Adapt
         // Drawable을 ImageView에 설정
         binding.photo1.setImageDrawable(drawable)
         binding.photo1.setOnLongClickListener{
-            itemClickListener.onClick(it, position)
+            itemLongClickListener.onLongClick(it, position)
             true
+        }
+        binding.photo1.setOnClickListener{
+            itemClickListener.onClick(it, position)
         }
     }
 }
