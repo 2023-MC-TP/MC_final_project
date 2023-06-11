@@ -62,8 +62,8 @@ class SaveFragment: Fragment() {
             }
         }
 
-        // 버튼 누르면 갤러리에서 선택한 사진 등록(일단 view에 보이게만 > 이미지 누르면으로 변경상태
-        binding.insertPhoto.setOnClickListener {
+        // 버튼 누르면 갤러리에서 선택한 사진 등록(일단 view에 보이게만
+        binding.galBtn.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             requestGal.launch(intent)

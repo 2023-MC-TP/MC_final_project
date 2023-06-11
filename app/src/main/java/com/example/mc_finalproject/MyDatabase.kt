@@ -8,7 +8,7 @@ import android.util.Log
 
 class MyDatabase {
     object MyDBContract {
-        object MyEntry: BaseColumns {
+        object MyEntry : BaseColumns {
             const val TABLE_NAME = "myDBfile"
             const val image_id = "image_id"
             const val image = "image"
@@ -19,7 +19,8 @@ class MyDatabase {
         }
     }
 
-    class MyDbHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+    class MyDbHelper(context: Context) :
+        SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
         val SQL_CREATE_ENTRIES =
             "CREATE TABLE ${MyDBContract.MyEntry.TABLE_NAME} (" +
                     "${MyDBContract.MyEntry.image_id} INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -42,31 +43,90 @@ class MyDatabase {
         override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
             onUpgrade(db, oldVersion, newVersion)
         }
+
         companion object {
             const val DATABASE_VERSION = 1
             const val DATABASE_NAME = "myDBfile.db"
         }
 
-        // 날짜 검색
-        // "select * from" + "MyDBContract.MyEntry.TABLE_NAME" + "where date = date(입력값)"
-        // 이름 검색
-        // "select * from" + "MyDBContract.MyEntry.TABLE_NAME" + "where name = name(입력값)"
-
         fun selectAll(): MutableList<MyElement> {
             val readList = mutableListOf<MyElement>()
             val db = readableDatabase
             val cursor = db.rawQuery("SELECT * FROM " + MyDBContract.MyEntry.TABLE_NAME + ";", null)
-            Log.d("TAG", "Select All Query: " + "SELECT * FROM " + MyDBContract.MyEntry.TABLE_NAME + ";")
+            Log.d(
+                "TAG",
+                "Select All Query: " + "SELECT * FROM " + MyDBContract.MyEntry.TABLE_NAME + ";"
+            )
             Log.d("TAG", cursor.toString())
-            with(cursor){
-                while (moveToNext()){
-                    readList.add(MyElement(
-                        cursor.getInt(0),
-                        cursor.getBlob(1),
-                        cursor.getString(2),
-                        cursor.getString(3),
-                        cursor.getString(4),
-                        cursor.getString(5))
+            with(cursor) {
+                while (moveToNext()) {
+                    readList.add(
+                        MyElement(
+                            cursor.getInt(0),
+                            cursor.getBlob(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4),
+                            cursor.getString(5)
+                        )
+                    )
+                }
+            }
+            cursor.close()
+            db.close()
+            return readList
+        }
+
+        // 날짜 검색
+        // "select * from" + "MyDBContract.MyEntry.TABLE_NAME" + "where date = date(입력값)"
+        fun selectDate(date: String): MutableList<MyElement> {
+            val readList = mutableListOf<MyElement>()
+            val db = readableDatabase
+            val query = "SELECT * FROM ${MyDBContract.MyEntry.TABLE_NAME} WHERE ${MyDBContract.MyEntry.date} = ?; "
+            val cursor = db.rawQuery(query, arrayOf(date))
+
+            // 결과 처리
+            Log.d("TAG", cursor.toString())
+            with(cursor) {
+                while (moveToNext()) {
+                    readList.add(
+                        MyElement(
+                            cursor.getInt(0),
+                            cursor.getBlob(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4),
+                            cursor.getString(5)
+                        )
+                    )
+                }
+            }
+            cursor.close()
+            db.close()
+            return readList
+        }
+
+        // 이름 검색
+        // "select * from" + "MyDBContract.MyEntry.TABLE_NAME" + "where name = name(입력값)"
+        fun selectName(name: String): MutableList<MyElement> {
+            val readList = mutableListOf<MyElement>()
+            val db = readableDatabase
+            val query = "SELECT * FROM ${MyDBContract.MyEntry.TABLE_NAME} WHERE ${MyDBContract.MyEntry.name} = ?; "
+            val cursor = db.rawQuery(query, arrayOf(name))
+
+            // 결과 처리
+            Log.d("TAG", cursor.toString())
+            with(cursor) {
+                while (moveToNext()) {
+                    readList.add(
+                        MyElement(
+                            cursor.getInt(0),
+                            cursor.getBlob(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4),
+                            cursor.getString(5)
+                        )
                     )
                 }
             }
