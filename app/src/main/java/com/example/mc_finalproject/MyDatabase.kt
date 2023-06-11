@@ -108,5 +108,31 @@ class MyDatabase {
 
         // 이름 검색
         // "select * from" + "MyDBContract.MyEntry.TABLE_NAME" + "where name = name(입력값)"
+        fun selectName(name: String): MutableList<MyElement> {
+            val readList = mutableListOf<MyElement>()
+            val db = readableDatabase
+            val query = "SELECT * FROM ${MyDBContract.MyEntry.TABLE_NAME} WHERE ${MyDBContract.MyEntry.name} = ?; "
+            val cursor = db.rawQuery(query, arrayOf(name))
+
+            // 결과 처리
+            Log.d("TAG", cursor.toString())
+            with(cursor) {
+                while (moveToNext()) {
+                    readList.add(
+                        MyElement(
+                            cursor.getInt(0),
+                            cursor.getBlob(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4),
+                            cursor.getString(5)
+                        )
+                    )
+                }
+            }
+            cursor.close()
+            db.close()
+            return readList
+        }
     }
 }
