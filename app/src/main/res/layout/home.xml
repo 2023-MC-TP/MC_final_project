@@ -8,21 +8,22 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <DatePicker
-            android:id="@+id/datePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="424dp"
-            android:layout_gravity="center"
-            android:calendarViewShown="false"
-            android:datePickerMode="calendar" />
+<!--        <DatePicker-->
+<!--            android:id="@+id/datePicker"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="424dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:calendarViewShown="false"-->
+<!--            android:datePickerMode="calendar" />-->
 
         <TextView
             android:id="@+id/albumTxt"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:gravity="left|center"
-            android:text=" 앨범"
-            android:textSize="20dp" />
+            android:gravity="center"
+            android:text="내가 저장한 사진"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
 
         <!-- 사진 불러와서 보여주는 용도 -->
         <androidx.recyclerview.widget.RecyclerView
