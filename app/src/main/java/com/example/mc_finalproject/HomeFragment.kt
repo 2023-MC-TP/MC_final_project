@@ -32,10 +32,8 @@ class HomeFragment: Fragment() {
 
         var binding = HomeBinding.bind(view)
 
-        // 테스트 해보려고 주석처리 했어요
         dbHelper = MyDatabase.MyDbHelper(requireContext())
         loadAndUpdateUI(view)
-
 
         // Adapter,RecyclerView로 이미지 띄우기 test
 //        val imageList = listOf(
@@ -69,7 +67,6 @@ class HomeFragment: Fragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerView.adapter = adapter
     }
-
 }
 
 private fun byteArrayToDrawable(context: Context, byteArray: ByteArray): Drawable? {
@@ -79,4 +76,3 @@ private fun byteArrayToDrawable(context: Context, byteArray: ByteArray): Drawabl
     val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size, options)
     return BitmapDrawable(context.resources, bitmap)
 }
-
