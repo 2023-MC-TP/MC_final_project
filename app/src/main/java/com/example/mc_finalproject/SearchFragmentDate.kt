@@ -76,9 +76,6 @@ class SearchFragmentDate : Fragment() {
 
         val selectedDate = "$year/$month/$day"
 
-        val getList = dbHelper.selectDate(selectedDate)
-        val adapter = MyAdapter(getList)
-
         binding.searchDateBut.setOnClickListener {
             val getList = dbHelper.selectDate(selectedDate)
             val adapter = MyAdapter(getList)

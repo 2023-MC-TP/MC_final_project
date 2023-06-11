@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        android:padding="20dp">
 
         <EditText
             android:id="@+id/searchName"
@@ -15,13 +15,20 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="20dp" />
+        <Button
+            android:id="@+id/searchNameBut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="검색"/>
 
         <!-- 검색 전엔 보이지 않게 + 검색한 사람 이름 띄워줘야함-->
         <TextView
+            android:id="@+id/nameTxt"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="left|center"
-            android:text="ㅇㅇㅇ님과 찍은 사진"
+            android:text=""
             android:textSize="20dp" />
 
         <!-- 사진 불러와서 보여주는 용도 -->
@@ -30,6 +37,5 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
-
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
