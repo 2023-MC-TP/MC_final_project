@@ -33,37 +33,35 @@ class HomeFragment: Fragment() {
         var binding = HomeBinding.bind(view)
 
         // 테스트 해보려고 주석처리 했어요
-//        dbHelper = MyDatabase.MyDbHelper(requireContext())
-//        val db = dbHelper.writableDatabase
-//
-//        val getList = dbHelper.selectAll()
-//        if (getList.isNotEmpty()){
-//            val data = getList[0]
-//            val drawable = byteArrayToDrawable(requireContext(), data.image)
-//        }
-//        val adapter = MyAdapter(getList)
-//        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-//        binding.recyclerView.adapter = adapter
-//        binding.recyclerView.addItemDecoration(
-//            DividerItemDecoration(
-//                requireContext(),
-//                LinearLayoutManager.VERTICAL
-//            )
-//        )
-
+        dbHelper = MyDatabase.MyDbHelper(requireContext())
+        loadAndUpdateUI(view)
+        val db = dbHelper.writableDatabase
 
         // Adapter,RecyclerView로 이미지 띄우기 test
-        val imageList = listOf(
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background
-        )
+//        val imageList = listOf(
+//            R.drawable.ic_launcher_background,
+//            R.drawable.ic_launcher_background,
+//            R.drawable.ic_launcher_background,
+//            R.drawable.ic_launcher_background,
+//            R.drawable.ic_launcher_background
+//        )
+//
+//        val testA = TestAdapter(imageList)
+//        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+//        binding.recyclerView.adapter = testA
+//    }
+    }
 
-        val testA = TestAdapter(imageList)
+    private fun loadAndUpdateUI(view: View) {
+        var binding = HomeBinding.bind(view)
+        val getList = dbHelper.selectAll()
+        if (getList.isNotEmpty()){
+            val data = getList[1]
+            val drawable = byteArrayToDrawable(requireContext(), data.image)
+        }
+        val adapter = MyAdapter(getList)
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
-        binding.recyclerView.adapter = testA
+        binding.recyclerView.adapter = adapter
     }
 }
 
