@@ -14,7 +14,8 @@
             android:layout_height="50dp"
             android:gravity="left|center"
             android:text="추억 저장하기"
-            android:textSize="25dp" />
+            android:textSize="30dp"
+            android:textStyle="bold"/>
 
         <!--버튼누르면 갤러리 이동하기위해 추가-->
         <Button
@@ -44,7 +45,6 @@
             <EditText
                 android:id="@+id/people"
                 android:text=""
-                android:hint="--"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
         </LinearLayout>
@@ -62,7 +62,6 @@
             <EditText
                 android:id="@+id/place"
                 android:text=""
-                android:hint="--"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
         </LinearLayout>
@@ -102,7 +101,7 @@
         <EditText
             android:id="@+id/memo"
             android:inputType="textMultiLine"
-            android:hint="--"
+            android:hint="이 사진에 대한 기록을 남겨보세요!"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <!--저장 버튼 추가-->

@@ -1,6 +1,6 @@
 package com.example.mc_finalproject
 
-import android.app.Activity.RESULT_OK
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -8,20 +8,13 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mc_finalproject.databinding.HomeBinding
-import com.example.mc_finalproject.databinding.HomePhotoListBinding
 
 class HomeFragment: Fragment() {
     private lateinit var dbHelper: MyDatabase.MyDbHelper
@@ -61,6 +54,8 @@ class HomeFragment: Fragment() {
         val getList = dbHelper.selectAll()
 
         val adapter = MyAdapter(getList)
+
+        // 롱클릭 시 사진 삭제
         adapter.setItemLongClickListener(object: MyAdapter.OnItemLongClickListener {
             override fun onLongClick(v: View, position: Int) {
                 val db = dbHelper.writableDatabase
@@ -71,6 +66,7 @@ class HomeFragment: Fragment() {
             }
         })
 
+        // 그냥 클릭 시 사진 상세보기
         adapter.setItemClickListener(object: MyAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
                 val intent: Intent = Intent(v.context, Detail::class.java).apply{

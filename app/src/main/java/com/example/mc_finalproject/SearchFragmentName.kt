@@ -1,6 +1,7 @@
 package com.example.mc_finalproject
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
@@ -9,6 +10,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mc_finalproject.databinding.SearchFragNameBinding
@@ -37,16 +39,25 @@ class SearchFragmentName : Fragment(){
 
             val getList = dbHelper.selectName(searchName.toString())
             val adapter = MyAdapter(getList)
-            adapter.setItemClickListener(object : MyAdapter.OnItemClickListener {
-                override fun onClick(v: View, position: Int) {
+
+            // 롱클릭 시 사진 삭제
+            adapter.setItemLongClickListener(object: MyAdapter.OnItemLongClickListener {
+                override fun onLongClick(v: View, position: Int) {
                     val db = dbHelper.writableDatabase
                     val itemId = adapter.getElement(position).image_id
-                    db?.delete(
-                        MyDatabase.MyDBContract.MyEntry.TABLE_NAME,
-                        "${MyDatabase.MyDBContract.MyEntry.image_id}=?",
-                        arrayOf(itemId.toString())
-                    )
+                    db?.delete(MyDatabase.MyDBContract.MyEntry.TABLE_NAME, "${MyDatabase.MyDBContract.MyEntry.image_id}=?", arrayOf(itemId.toString()))
                     loadAndUpdateUI(view)
+                    Toast.makeText(requireContext(), "사진이 삭제되었습니다", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+            // 그냥 클릭 시 사진 상세보기
+            adapter.setItemClickListener(object: MyAdapter.OnItemClickListener{
+                override fun onClick(v: View, position: Int) {
+                    val intent: Intent = Intent(v.context, Detail::class.java).apply{
+                        putExtra("id", adapter.getElement(position).image_id)
+                    }
+                    v.context.startActivity(intent)
                 }
             })
 

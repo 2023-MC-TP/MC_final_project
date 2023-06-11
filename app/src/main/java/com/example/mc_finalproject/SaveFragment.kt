@@ -19,11 +19,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.mc_finalproject.databinding.StorageBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.util.Calendar
 
@@ -98,11 +93,17 @@ class SaveFragment: Fragment() {
                 put(myentry.comment, binding.memo.text.toString())
 
             }
-            // 로그는 잘 찍히는데 노트북에 Toast메세지는 안뜨고 핸드폰에만 떠요
             Toast.makeText(requireContext(), "정상적으로 저장되었습니다 :)", Toast.LENGTH_SHORT).show()
             Log.d("TAG", "저장" + values.toString())
 
-//            val newRowId = db?.insertOrThrow(myentry.TABLE_NAME, null, values)
+            // 정상 저장 시 저장 화면 초가화
+            // 이미지 변경하고 바꿔줘여함.
+            binding.insertPhoto.setImageResource(R.drawable.ic_launcher_background)
+            binding.people.text = null
+            binding.place.text = null
+            binding.viewDate.text = year.toString() + "/" + (month+1).toString() + "/" + day.toString()
+            binding.memo.text = null
+
 
             // 예외처리 필요하면 추가 해주기
             try {

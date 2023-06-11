@@ -10,6 +10,14 @@
         android:padding="20dp">
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="사진 상세보기"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
+
         <!--기본 이미지 교체해야함-->
         <ImageView
             android:id="@+id/detail_img"
