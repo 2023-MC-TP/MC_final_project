@@ -12,7 +12,7 @@
 
         <!--기본 이미지 교체해야함-->
         <ImageView
-            android:id="@+id/insertPhoto"
+            android:id="@+id/detail_img"
             android:src="@drawable/ic_launcher_background"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
                 android:text="함께한 사람 : "
                 android:textSize="20dp" />
             <TextView
-                android:id="@+id/detail_people"
+                android:id="@+id/detail_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
         </LinearLayout>
@@ -76,8 +76,14 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/memo"
+            android:id="@+id/detail_comment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/backBtn"/>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

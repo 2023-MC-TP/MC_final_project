@@ -134,5 +134,32 @@ class MyDatabase {
             db.close()
             return readList
         }
+
+        fun findById(id: Int): MyElement {
+            val readList = mutableListOf<MyElement>()
+            val db = readableDatabase
+            val query = "SELECT * FROM ${MyDBContract.MyEntry.TABLE_NAME} WHERE ${MyDBContract.MyEntry.image_id} = ?; "
+            val cursor = db.rawQuery(query, arrayOf(id.toString()))
+
+            // 결과 처리
+            Log.d("TAG", cursor.toString())
+            with(cursor) {
+                while (moveToNext()) {
+                    readList.add(
+                        MyElement(
+                            cursor.getInt(0),
+                            cursor.getBlob(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4),
+                            cursor.getString(5)
+                        )
+                    )
+                }
+            }
+            cursor.close()
+            db.close()
+            return readList[0]
+        }
     }
 }

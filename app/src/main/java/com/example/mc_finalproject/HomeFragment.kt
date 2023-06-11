@@ -1,16 +1,21 @@
 package com.example.mc_finalproject
 
+import android.app.Activity.RESULT_OK
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
@@ -65,10 +70,13 @@ class HomeFragment: Fragment() {
                 Toast.makeText(requireContext(), "사진이 삭제되었습니다", Toast.LENGTH_SHORT).show()
             }
         })
+
         adapter.setItemClickListener(object: MyAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
-                val itemId = adapter.getElement(position).image_id
-
+                val intent: Intent = Intent(v.context, Detail::class.java).apply{
+                    putExtra("id", adapter.getElement(position).image_id)
+                }
+                v.context.startActivity(intent)
             }
         })
 
