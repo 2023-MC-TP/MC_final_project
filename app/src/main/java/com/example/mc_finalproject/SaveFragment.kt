@@ -102,20 +102,15 @@ class SaveFragment: Fragment() {
             Toast.makeText(requireContext(), "정상적으로 저장되었습니다 :)", Toast.LENGTH_SHORT).show()
             Log.d("TAG", "저장" + values.toString())
 
-            val newRowId = db?.insertOrThrow(myentry.TABLE_NAME, null, values)
+//            val newRowId = db?.insertOrThrow(myentry.TABLE_NAME, null, values)
 
             // 예외처리 필요하면 추가 해주기
-//            try {
-//                val newRowId = db?.insertOrThrow(myentry.TABLE_NAME, null, values)
-//                Log.d("TAG", newRowId.toString())
-//            } catch (e: SQLiteConstraintException) {
-//                db?.update(
-//                    myentry.TABLE_NAME,
-//                    values,
-//                    "${myentry.xx} LIKE ? ",
-//                    arrayOf(binding.xx.text.toString())
-//                )
-//            }
+            try {
+                val newRowId = db?.insertOrThrow(myentry.TABLE_NAME, null, values)
+                Log.d("TAG", newRowId.toString())
+            } catch (e: SQLiteConstraintException) {
+                Log.d("d", "Error")
+            }
             db.close()
 
             val getList = dbHelper.selectAll()

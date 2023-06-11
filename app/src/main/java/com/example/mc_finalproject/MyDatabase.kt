@@ -10,6 +10,7 @@ class MyDatabase {
     object MyDBContract {
         object MyEntry: BaseColumns {
             const val TABLE_NAME = "myDBfile"
+            const val image_id = "image_id"
             const val image = "image"
             const val date = "date"
             const val place = "place"
@@ -21,7 +22,7 @@ class MyDatabase {
     class MyDbHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
         val SQL_CREATE_ENTRIES =
             "CREATE TABLE ${MyDBContract.MyEntry.TABLE_NAME} (" +
-                    "${BaseColumns._ID} INTEGER PRIMARY KEY," +
+                    "${MyDBContract.MyEntry.image_id} INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "${MyDBContract.MyEntry.image} BLOB," +
                     "${MyDBContract.MyEntry.date} TEXT," +
                     "${MyDBContract.MyEntry.place} TEXT," +
@@ -60,6 +61,7 @@ class MyDatabase {
             with(cursor){
                 while (moveToNext()){
                     readList.add(MyElement(
+                        cursor.getInt(0),
                         cursor.getBlob(1),
                         cursor.getString(2),
                         cursor.getString(3),

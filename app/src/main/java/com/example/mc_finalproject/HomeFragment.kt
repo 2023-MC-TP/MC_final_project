@@ -35,7 +35,7 @@ class HomeFragment: Fragment() {
         // 테스트 해보려고 주석처리 했어요
         dbHelper = MyDatabase.MyDbHelper(requireContext())
         loadAndUpdateUI(view)
-        val db = dbHelper.writableDatabase
+
 
         // Adapter,RecyclerView로 이미지 띄우기 test
 //        val imageList = listOf(
@@ -55,14 +55,21 @@ class HomeFragment: Fragment() {
     private fun loadAndUpdateUI(view: View) {
         var binding = HomeBinding.bind(view)
         val getList = dbHelper.selectAll()
-        if (getList.isNotEmpty()){
-            val data = getList[1]
-            val drawable = byteArrayToDrawable(requireContext(), data.image)
-        }
+
         val adapter = MyAdapter(getList)
+        adapter.setItemClickListener(object: MyAdapter.OnItemClickListener {
+            override fun onClick(v: View, position: Int) {
+                val db = dbHelper.writableDatabase
+                val itemId = adapter.getElement(position).image_id
+                db?.delete(MyDatabase.MyDBContract.MyEntry.TABLE_NAME, "${MyDatabase.MyDBContract.MyEntry.image_id}=?", arrayOf(itemId.toString()))
+                loadAndUpdateUI(view)
+            }
+        })
+
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerView.adapter = adapter
     }
+
 }
 
 private fun byteArrayToDrawable(context: Context, byteArray: ByteArray): Drawable? {
