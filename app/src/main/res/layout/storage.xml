@@ -45,6 +45,7 @@
             <EditText
                 android:id="@+id/people"
                 android:text=""
+                android:textSize="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
         </LinearLayout>
@@ -62,6 +63,7 @@
             <EditText
                 android:id="@+id/place"
                 android:text=""
+                android:textSize="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
         </LinearLayout>
@@ -102,6 +104,8 @@
             android:id="@+id/memo"
             android:inputType="textMultiLine"
             android:hint="이 사진에 대한 기록을 남겨보세요!"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <!--저장 버튼 추가-->
