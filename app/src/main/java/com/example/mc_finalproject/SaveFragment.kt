@@ -98,7 +98,7 @@ class SaveFragment: Fragment() {
 
             // 정상 저장 시 저장 화면 초가화
             // 이미지 변경하고 바꿔줘여함.
-            binding.insertPhoto.setImageResource(R.drawable.ic_launcher_background)
+            binding.insertPhoto.setImageResource(R.drawable.menu_img)
             binding.people.text = null
             binding.place.text = null
             binding.viewDate.text = year.toString() + "/" + (month+1).toString() + "/" + day.toString()

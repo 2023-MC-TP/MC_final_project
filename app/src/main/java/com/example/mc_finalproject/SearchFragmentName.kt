@@ -36,67 +36,45 @@ class SearchFragmentName : Fragment(){
             // 검색한 이름 띄워주기
             var searchName = binding.searchName.text
             binding.nameTxt.text = "${searchName}님과 찍은 사진"
-
-            val getList = dbHelper.selectName(searchName.toString())
-            val adapter = MyAdapter(getList)
-
-            // 롱클릭 시 사진 삭제
-            adapter.setItemLongClickListener(object: MyAdapter.OnItemLongClickListener {
-                override fun onLongClick(v: View, position: Int) {
-                    val db = dbHelper.writableDatabase
-                    val itemId = adapter.getElement(position).image_id
-                    db?.delete(MyDatabase.MyDBContract.MyEntry.TABLE_NAME, "${MyDatabase.MyDBContract.MyEntry.image_id}=?", arrayOf(itemId.toString()))
-                    loadAndUpdateUI(view)
-                    Toast.makeText(requireContext(), "사진이 삭제되었습니다", Toast.LENGTH_SHORT).show()
-                }
-            })
-
-            // 그냥 클릭 시 사진 상세보기
-            adapter.setItemClickListener(object: MyAdapter.OnItemClickListener{
-                override fun onClick(v: View, position: Int) {
-                    val intent: Intent = Intent(v.context, Detail::class.java).apply{
-                        putExtra("id", adapter.getElement(position).image_id)
-                    }
-                    v.context.startActivity(intent)
-                }
-            })
-
-            binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
-            binding.recyclerView.adapter = adapter
+            loadAndUpdateUI(view)
         }
     }
     private fun loadAndUpdateUI(view: View) {
         var binding = SearchFragNameBinding.bind(view)
 
-        var selectName = binding.searchName.text
+        var searchName = binding.searchName.text
+        val getList = dbHelper.selectName(searchName.toString())
+        val adapter = MyAdapter(getList)
 
-        binding.searchNameBut.setOnClickListener {
-            val getList = dbHelper.selectName(selectName.toString())
-            val adapter = MyAdapter(getList)
+        // 롱클릭 시 사진 삭제
+        adapter.setItemLongClickListener(object: MyAdapter.OnItemLongClickListener {
+            override fun onLongClick(v: View, position: Int) {
+                val db = dbHelper.writableDatabase
+                val itemId = adapter.getElement(position).image_id
+                db?.delete(MyDatabase.MyDBContract.MyEntry.TABLE_NAME, "${MyDatabase.MyDBContract.MyEntry.image_id}=?", arrayOf(itemId.toString()))
+                loadAndUpdateUI(view)
+                Toast.makeText(requireContext(), "사진이 삭제되었습니다", Toast.LENGTH_SHORT).show()
+            }
+        })
 
-            adapter.setItemClickListener(object : MyAdapter.OnItemClickListener {
-                override fun onClick(v: View, position: Int) {
-                    val db = dbHelper.writableDatabase
-                    val itemId = adapter.getElement(position).image_id
-                    db?.delete(
-                        MyDatabase.MyDBContract.MyEntry.TABLE_NAME,
-                        "${MyDatabase.MyDBContract.MyEntry.image_id}=?",
-                        arrayOf(itemId.toString())
-                    )
-                    loadAndUpdateUI(view)
+        // 그냥 클릭 시 사진 상세보기
+        adapter.setItemClickListener(object: MyAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                val intent: Intent = Intent(v.context, Detail::class.java).apply{
+                    putExtra("id", adapter.getElement(position).image_id)
                 }
-            })
-
-            binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
-            binding.recyclerView.adapter = adapter
+                v.context.startActivity(intent)
+            }
+        })
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.recyclerView.adapter = adapter
         }
     }
 
-    private fun byteArrayToDrawable(context: Context, byteArray: ByteArray): Drawable? {
-        val options = BitmapFactory.Options().apply {
-            inPreferredConfig = Bitmap.Config.ARGB_8888
-        }
-        val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size, options)
-        return BitmapDrawable(context.resources, bitmap)
+private fun byteArrayToDrawable(context: Context, byteArray: ByteArray): Drawable? {
+    val options = BitmapFactory.Options().apply {
+        inPreferredConfig = Bitmap.Config.ARGB_8888
     }
+    val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size, options)
+    return BitmapDrawable(context.resources, bitmap)
 }
