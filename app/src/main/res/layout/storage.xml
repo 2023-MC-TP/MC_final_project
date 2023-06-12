@@ -45,7 +45,7 @@
             <EditText
                 android:id="@+id/people"
                 android:text=""
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
         </LinearLayout>
@@ -63,7 +63,7 @@
             <EditText
                 android:id="@+id/place"
                 android:text=""
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
         </LinearLayout>
@@ -82,9 +82,8 @@
                 android:id="@+id/viewDate"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"/>
+                android:textSize="18dp"/>
 
-            <!--이거 나중에 이미지로 바꾸면 나을거같아요-->
             <Button
                 android:id="@+id/inputDate"
                 android:layout_width="wrap_content"
@@ -104,7 +103,7 @@
             android:id="@+id/memo"
             android:inputType="textMultiLine"
             android:hint="이 사진에 대한 기록을 남겨보세요!"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
