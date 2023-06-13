@@ -27,7 +27,7 @@
         <!--기본 이미지 교체해야함-->
         <ImageView
             android:id="@+id/insertPhoto"
-            android:layout_width="165dp"
+            android:layout_width="164dp"
             android:layout_height="164dp"
             android:layout_gravity="center"
             android:src="@drawable/menu_img" />

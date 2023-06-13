@@ -1,36 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <!--이 부분은 하단 바랑 Fragment를 보여주는 화면. 나중에 하단 바만 수정하면 될꺼같음-->
+
+    <!-- Fragment를 보여주는 FrameLayout -->
     <FrameLayout
+        android:id="@+id/fragment_view"
         android:layout_width="match_parent"
         android:layout_height="0sp"
-        android:layout_weight="9"
-        android:id="@+id/fragment_view"/>
+        android:layout_weight="9" />
+
+    <!-- 하단 바 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="1"
+        android:layout_height="40dp"
         android:orientation="horizontal">
-        <Button
-            android:layout_width="0sp"
-            android:layout_height="match_parent"
+
+        <ImageButton
+            android:id="@+id/search_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Search"
-            android:id="@+id/search_btn"/>
-        <Button
-            android:layout_width="0sp"
-            android:layout_height="match_parent"
+            android:src="@drawable/ic_search"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:id="@+id/home_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Home"
-            android:id="@+id/home_btn"/>
-        <Button
-            android:layout_width="0sp"
-            android:layout_height="match_parent"
+            android:src="@drawable/ic_home"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:id="@+id/save_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save"
-            android:id="@+id/save_btn"/>
+            android:src="@drawable/ic_save"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent" />
+
     </LinearLayout>
+
 </LinearLayout>
