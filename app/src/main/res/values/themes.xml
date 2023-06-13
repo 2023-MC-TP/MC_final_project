@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MC_FinalProject" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">#DC7FFF</item>
+        <item name="colorPrimary">#CE7FFF</item>
     </style>
 
     <style name="Theme.MC_FinalProject" parent="Base.Theme.MC_FinalProject" />
