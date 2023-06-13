@@ -12,8 +12,8 @@
         <TextView
             android:text="날짜로 사진을 검색하세요."
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="20dp"/>
+            android:layout_height="30dp"
+            android:textSize="15dp"/>
 
         <DatePicker
             android:id="@+id/datePicker"

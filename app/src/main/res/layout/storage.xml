@@ -11,27 +11,33 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="left|center"
+            android:layout_height="30dp"
+            android:gravity="center"
             android:text="추억 저장하기"
-            android:textSize="30dp"
+            android:textSize="18dp"
             android:textStyle="bold"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <!--기본 이미지 교체해야함-->
+        <ImageView
+            android:id="@+id/insertPhoto"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:src="@drawable/menu2" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <!--버튼누르면 갤러리 이동하기위해 추가-->
         <Button
             android:id="@+id/galBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="사진 불러오기"/>
-
-        <!--기본 이미지 교체해야함-->
-        <ImageView
-            android:id="@+id/insertPhoto"
-            android:layout_width="164dp"
-            android:layout_height="164dp"
             android:layout_gravity="center"
-            android:src="@drawable/menu_img" />
-
+            android:text="사진 불러오기"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -41,7 +47,7 @@
                 android:layout_height="50dp"
                 android:gravity="left|center"
                 android:text="함께한 사람 : "
-                android:textSize="20dp" />
+                android:textSize="15dp" />
             <EditText
                 android:id="@+id/people"
                 android:text=""
@@ -59,7 +65,7 @@
                 android:layout_height="50dp"
                 android:gravity="left|center"
                 android:text="촬영한 장소 : "
-                android:textSize="20dp" />
+                android:textSize="15dp" />
             <EditText
                 android:id="@+id/place"
                 android:text=""
@@ -72,38 +78,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:gravity="left|center"
                 android:text="촬영한 날짜 : "
-                android:textSize="20dp" />
+                android:textSize="15dp" />
+
             <TextView
                 android:id="@+id/viewDate"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"/>
+                android:textSize="15dp" />
+
+            <!-- 수정 버튼을 오른쪽 끝으로 이동 -->
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/inputDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="수정" />
+
         </LinearLayout>
+
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="left|center"
             android:text="추억 기록"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
         <!--의존성 문제가 있어서 android:textMultiLine을 android:inputType="textMultiLine"로 대치-->
         <EditText
             android:id="@+id/memo"
             android:inputType="textMultiLine"
             android:hint="이 사진에 대한 기록을 남겨보세요!"
-            android:textSize="18dp"
+            android:textSize="13dp"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -112,6 +129,7 @@
             android:id="@+id/insertBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
             android:text="저장"/>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
